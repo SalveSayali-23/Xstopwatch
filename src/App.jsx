@@ -7,18 +7,16 @@ const App = () => {
 
   useEffect(() => {
     let timerId;
-    if(isRunning){
-       timerId = setInterval(() => {
-      setTimer((prevTimer) => prevTimer + 1);
-    }, 1000);
-  }
+    if (isRunning) {
+      timerId = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+    }
     return () => {
       clearInterval(timerId);
     };
   }, [isRunning, timer]);
 
-    
-    
   const formatTime = (secs) => {
     const mins = Math.floor(secs / 60);
     const remainingSecs = secs % 60;
@@ -36,7 +34,7 @@ const App = () => {
   return (
     <div>
       <h1>Stopwatch</h1>
-      <p>Time : {formatTime(timer)}</p>
+      <p>Time: {formatTime(timer)}</p>
       <button onClick={startReset}>{isRunning ? "Stop" : "Start"}</button>
       <button onClick={resetHandler}>Reset</button>
     </div>
